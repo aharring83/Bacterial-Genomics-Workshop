@@ -13,3 +13,7 @@ On a Mac or Linux machine, you can access a shell through a program called “Te
 On a PC/Windows, you’ll need to download powershell or gitbash to access the shell.
 
 To save time, we will be working on a remote server, provided by CyVerse (located in Arizona), where all the necessary data and software is available. 
+
+Here is a cheatsheet to help you with using text commands to interact with the CLI.
+
+[![](https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg)](http://https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg)
