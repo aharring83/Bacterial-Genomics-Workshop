@@ -17,3 +17,7 @@ To save time, we will be working on a remote server, provided by CyVerse (locate
 Here is a cheatsheet to help you with using text commands to interact with the CLI.
 
 [![](https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg)](http://https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg)
+
+Lets begin using the CLI!!!!
+
+First we need to connect to the remote server. Since CyVerse offers cloud-computing, we need to launch an instance of a virtual machine pre-configured with a specific operating system and software. CyVerse uses a program, Atmosphere, to launch instances. We will be starting our atmospheres (instances) and connecting to the remote server by ssh (secure shell).
