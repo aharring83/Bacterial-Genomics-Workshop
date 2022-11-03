@@ -54,7 +54,13 @@ pwd
 cd ..
 ```
 ```
+ls 
+```
+```
 rm -rf test
+```
+```
+ls
 ```
 
 ### Quality Control Assessment and Trimming of Sequencing Reads
@@ -68,5 +74,23 @@ These are the raw fastq files that have not been trimmed of low quality data and
 We are going to trim and assess the quality of the trimmed reads.
 We will be using fastp to trim the reads, FastQC and MultiQC to assess the reads quality.
 Since we have a few samples to process, it would be easier if we wrote a bash script to execute the commands.
-
+We will be using a text editor, nano, to write this script, but any text editor will work.
+Enter the commands:
+```
+nano
+```
+```
+#!/bin/bash
+for i in *_R1.fastq.gz
+do
+j=${i/_R1.fastq.gz/_R2.fastq.gz}
+mkdir trim
+fastp -i ${i} -I ${j} -o trim/${i/_R1.fastq.gz/trim_R1.fastq.gz} -O trim/${j/_R2.fastq.gz/_trim_R2.fastq.gz} -w 16
+wait
+mkdir QC
+fastqc -o QC trim/*.gz
+wait
+multiqc ./
+done
+```
 
