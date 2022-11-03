@@ -1,6 +1,6 @@
 # Bacterial-Genomics-Workshop
 - Welcome to the bacterial genomics workshop where we will learn how to process sequencing data, assemble genomes and build phylogenetic trees.
-- We will being using CyVerse to conduct this workshop but the procedures can be performed on a personal laptop with conda installed. 
+- We will being using a remote server to do the analysis but the procedures can be performed on a personal laptop with conda installed. 
 (- Instructions can on installing conda can be found here: https://github.com/rltillett/conda_notes
 
 
@@ -25,7 +25,12 @@ Here is a cheatsheet to help you with using text commands to interact with the C
 
 Lets begin using the CLI!!!!
 
-------------
+------------ 
 
-First we need to connect to the CyVerse server which offers cloud-computing. We need to launch an instance of a pre-configured virtual machine. CyVerse uses a program, Atmosphere, to launch instances. We will be starting our atmospheres (instances) and connecting to the remote server by ssh (secure shell).
-Login into CyVerse, then launch Atmosphere and login.  
+First we need to connect to the remote server using secure shell (ssh). For Macs, open a terminal. For PC, open a terminal using gitbash or putty. Type the following and press enter:
+```
+ssh {username}@10.238.4.152
+```
+Press enter and you will be prompted to enter your password. Enter your password, press enter. You will be asked a question about connecting to the server for the first time. Type "Yes" and press Enter.
+
+Congratulations! You have now used the CLI to connect to a remote server.
