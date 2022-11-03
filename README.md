@@ -5,6 +5,11 @@
 
 
 ------------
+# Requirements:
+Laptop (Mac or PC)
+If you have a PC laptop, please install gitbash or putty prior to the workshop.
+
+------------
 
 ### Command Line Interface (CLI)
 Most bioinformatic tools use the CLI. The CLI is a way of interacting with a computer's operating system using text representation of files, folders, etc. This differs from the commonly used graphical user interface (GUI), where we can see images linked to files, folders, etc. In order to access the CLI, we have to invoke a program, shell, which is a CLI program that allows us to control the computer by typing instructions with a keyboard.
@@ -20,4 +25,7 @@ Here is a cheatsheet to help you with using text commands to interact with the C
 
 Lets begin using the CLI!!!!
 
-First we need to connect to the remote server. Since CyVerse offers cloud-computing, we need to launch an instance of a virtual machine pre-configured with a specific operating system and software. CyVerse uses a program, Atmosphere, to launch instances. We will be starting our atmospheres (instances) and connecting to the remote server by ssh (secure shell).
+------------
+
+First we need to connect to the CyVerse server which offers cloud-computing. We need to launch an instance of a pre-configured virtual machine. CyVerse uses a program, Atmosphere, to launch instances. We will be starting our atmospheres (instances) and connecting to the remote server by ssh (secure shell).
+Login into CyVerse, then launch Atmosphere and login.  
