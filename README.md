@@ -110,3 +110,14 @@ Lets execute the script.
 ./trimQC.sh
  ```
  
+ After the script is running, we should have 2 new folders (trim and QC) created. Lets view the quality of our trimmed reads.
+ Open a new terminal and enter:
+ ```
+ scp {username}@10.238.4.152:/home/QC/multiqc* .
+ ```
+ Open the file download to your computer in a web browser.
+ 
+ ### Reference-based genome assembly
+ 
+ 
+ 
