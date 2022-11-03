@@ -106,7 +106,7 @@ ls
 ```
 We have create a shell script that is executable!
 Lets execute the script.
-'''
+```
 ./trimQC.sh
  ```
  
