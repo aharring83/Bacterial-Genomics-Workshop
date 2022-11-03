@@ -91,7 +91,7 @@ wait
 mkdir QC
 fastqc -o QC trim/*.gz
 wait
-multiqc ./
+multiqc QC/
 done
 ```
 Press Ctrl + X. Type Yes, name the file "trimQC.sh"
@@ -104,3 +104,9 @@ chmod u+x trimQC.sh
 ```
 ls
 ```
+We have create a shell script that is executable!
+Lets execute the script.
+'''
+./trimQC.sh
+ ```
+ 
