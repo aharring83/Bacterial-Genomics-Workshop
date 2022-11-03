@@ -34,3 +34,36 @@ ssh {username}@10.238.4.152
 Press enter and you will be prompted to enter your password. Enter your password, press enter. You will be asked a question about connecting to the server for the first time. Type "Yes" and press Enter.
 
 Congratulations! You have now used the CLI to connect to a remote server.
+Now we will test a few commands to get more familar with the CLI. Try the following commands:
+```
+ls
+```
+```
+pwd
+```
+```
+mkdir test
+```
+```
+cd test
+```
+```
+pwd
+```
+```
+cd ..
+```
+```
+rm -rf test
+```
+
+### Quality Control Assessment and Trimming of Sequencing Reads
+
+A FASTQ file is a text file that contains the sequence data.
+[![](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdrive5.com%2Fusearch%2Fmanual%2Ffastq_fig.jpg&f=1&nofb=1&ipt=752e997566ecebeda45503df6c24f8bf0a3132d2c15879722781eeb30a7a45fb&ipo=images)
+
+The fastq files are in a folder "Data", located at:
+These are the raw fastq files that have not been trimmed of low quality data and sequencing adapters/indexes.
+We are going to trim and assess the quality of the trimmed reads.
+
+
