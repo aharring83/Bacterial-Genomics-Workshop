@@ -60,7 +60,7 @@ rm -rf test
 ### Quality Control Assessment and Trimming of Sequencing Reads
 
 A FASTQ file is a text file that contains the sequence data.
-[![](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdrive5.com%2Fusearch%2Fmanual%2Ffastq_fig.jpg&f=1&nofb=1&ipt=752e997566ecebeda45503df6c24f8bf0a3132d2c15879722781eeb30a7a45fb&ipo=images)
+[![](https://drive5.com/usearch/manual/fastq_fig.jpg)
 
 The fastq files are in a folder "Data", located at:
 These are the raw fastq files that have not been trimmed of low quality data and sequencing adapters/indexes.
