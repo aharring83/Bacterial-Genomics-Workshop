@@ -79,6 +79,7 @@ Enter the commands:
 ```
 nano
 ```
+Paste this code:
 ```
 #!/bin/bash
 for i in *_R1.fastq.gz
@@ -93,4 +94,13 @@ wait
 multiqc ./
 done
 ```
-
+Press Ctrl + X. Type Yes, name the file "trimQC.sh"
+```
+ls
+```
+```
+chmod u+x trimQC.sh
+```
+```
+ls
+```
