@@ -60,10 +60,13 @@ rm -rf test
 ### Quality Control Assessment and Trimming of Sequencing Reads
 
 A FASTQ file is a text file that contains the sequence data.
-[![](https://drive5.com/usearch/manual/fastq_fig.jpg)
+
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fgencoded.com%2Fwp-content%2Fuploads%2F2020%2F05%2Ffastq_format_explained-3.png%3Fssl%3D1&f=1&nofb=1&ipt=48754aaa7290bcaf4d9aa3c070fde25c449e2451a8d775d00849567eb23ba5b9&ipo=images)
 
 The fastq files are in a folder "Data", located at:
 These are the raw fastq files that have not been trimmed of low quality data and sequencing adapters/indexes.
 We are going to trim and assess the quality of the trimmed reads.
+We will be using fastp to trim the reads, FastQC and MultiQC to assess the reads quality.
+Since we have a few samples to process, it would be easier if we wrote a bash script to execute the commands.
 
 
