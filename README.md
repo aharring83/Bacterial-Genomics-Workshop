@@ -151,7 +151,19 @@ bedtools getfasta -fi ref.fa -bed ${i/_trim_R1.fastq.gz/.vcf} -fo ${i/_trim_R1.f
 grep -v '>' ${i/_trim_R1.fastq.gz/_vcf.fasta} | tr -d  '\n' > ${i/_trim_R1.fastq.gz/_vcf.fasta}
 done
 ```
-
+Press Ctrl + X. Type Yes, name the file "analysis.sh"
+```
+ls
+```
+```
+chmod u+x analysis.sh
+```
+```
+ls
+```
+```
+./analysis.sh
+ ```
 
 
 
