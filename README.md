@@ -119,5 +119,3 @@ Lets execute the script.
  
  ### Reference-based genome assembly
 [![](https://i.ibb.co/jLMwQt0/Picture1.png)
- 
- 
