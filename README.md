@@ -120,7 +120,42 @@ Lets execute the script.
  ### Reference-based genome assembly
 [![](https://i.ibb.co/jLMwQt0/Picture1.png)
 
-We are going to use bowtie2 to align our reads and ivar to generate a consensus genome. We will then use bcftools to generate a variant calling file (vcf), which contains single nucleotide polymorphisms of each sample compared to the reference genome. Finally, we will convert the vcf files to fasta files, perform a multiple sequence alignment and do some phylogenetic analysis.
+We are going to use Burrows-Wheeler aligner to align our reads and ivar to generate a consensus genome. We will then use bcftools to generate a variant calling file (vcf), which contains single nucleotide polymorphisms of each sample compared to the reference genome. Finally, we will convert the vcf files to fasta files, perform a multiple sequence alignment and end the workshop with phylogenetic analysis.
+
+First, we need to create an index of our reference genome.
+Run the following commands in the folder containing the reference genome:
+```
+bwa index ref.fasta ref.fasta
+```
+```
+ls
+```
+Now we will align the reads to the indexed reference genome.
+```
+nano
+```
+Paste this code:
+```
+#!/bin/bash
+for i in *_trim_R1.fastq.gz
+do
+prefix=$(basename ${i/_trim_R1.fastq.gz})
+j=${i/_trim_R1.fastq.gz/_trim_R2.fastq.gz}
+mkdir sam
+bwa mem -t 16 -o sam/${i/_trim_R1.fastq.gz/.sam} /data/ref.fasta ${i} ${j}
+samtools view -h -b sam/${i/_trim_R1.fastq.gz/.sam}| samtools sort -@16 -o sam/${i/_trim_R1.fastq.gz/.bam}
+samtools mpileup -aa -A -d 0 -Q 0 sam/${i/_trim_R1.fastq.gz/.bam} | ivar consensus -p ${prefix}
+lofreq call -f ref.fa -o ${prefix}.vcf sam/${i/_trim_R1.fastq.gz/.bam}
+wait
+bedtools getfasta -fi ref.fa -bed ${i/_trim_R1.fastq.gz/.vcf} -fo ${i/_trim_R1.fastq.gz/_vcf.fasta}
+grep -v '>' ${i/_trim_R1.fastq.gz/_vcf.fasta} | tr -d  '\n' > ${i/_trim_R1.fastq.gz/_vcf.fasta}
+done
+```
+
+
+
+
+
 
 
 
