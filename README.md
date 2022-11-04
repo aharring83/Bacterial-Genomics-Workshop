@@ -119,3 +119,8 @@ Lets execute the script.
  
  ### Reference-based genome assembly
 [![](http://i.ibb.co/jLMwQt0/Picture1.png)
+
+We are going to use bowtie2 to align our reads and ivar to generate a consensus genome. We will then use bcftools to generate a variant calling file (vcf), which contains single nucleotide polymorphisms of each sample compared to the reference genome. Finally, we will convert the vcf files to fasta files, perform a multiple sequence alignment and do some phylogenetic analysis.
+
+
+
