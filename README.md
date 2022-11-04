@@ -118,6 +118,6 @@ Lets execute the script.
  Open the file download to your computer in a web browser.
  
  ### Reference-based genome assembly
-[![](<a href="https://ibb.co/BgZ6QkW"><img src="https://i.ibb.co/jLMwQt0/Picture1.png" alt="Picture1" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>free image hosting</a><br />)
+[![](https://i.ibb.co/jLMwQt0/Picture1.png)
  
  
