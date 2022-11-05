@@ -178,6 +178,7 @@ mafft -t 44 all.fasta > align.fasta
 ```
 FastTree -nt align.fasta > align.tree
 ```
+```
 Open a new terminal and transfer the align.tree file to your personal computer
 Go to http://etetoolkit.org/treeview/
 Upload your align.tree file and press view tree.
