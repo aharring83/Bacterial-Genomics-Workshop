@@ -165,8 +165,27 @@ ls
 ./analysis.sh
  ```
 
-
-
+ ### Multiple Sequence Alignment and Phylogenetic Analysis based on SNPs.
+ 
+We are going to use MAFFT to do the multiple sequence alignment and fasttree to generate a phylogenetic tree.
+Run the following commands:
+```
+cat *_vcf.fasta > all.fasta
+```
+```
+mafft -t 44 all.fasta > align.fasta
+```
+```
+FastTree -nt align.fasta > align.tree
+```
+Open a new terminal and transfer the align.tree file to your personal computer
+Go to http://etetoolkit.org/treeview/
+Upload your align.tree file and press view tree.
+Congratulations, we have generated a phylogenetic tree.
+Scientist use these trees to trace origins and spread of outbreaks, relatedness of different species and for identification purposes.
+From this workshop, we can use the tree to see which Legionella strains our samples are related to.
+Thank you for participating in the workshop and please fill out a survey.
+```
 
 
 
