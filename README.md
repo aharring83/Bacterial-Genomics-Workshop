@@ -70,7 +70,13 @@ source /mnt/data1/home/opt/miniconda/bin/activate
 ```
 Lets create an environment with all the packages needed for the workshop
 ```
-conda create -n workshop fastp samtools bwa ivar bedtools mafft fasttree
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+```
+```
+conda create -n workshop -c bioconda fastp samtools bwa ivar bedtools mafft fasttree
 ```
 ```
 conda activate workshop
@@ -96,16 +102,16 @@ nano
 Paste this code:
 ```
 #!/bin/bash
+mkdir -p trim
+mkdir -p QC
 for i in *_R1.fastq.gz
 do
 j=${i/_R1.fastq.gz/_R2.fastq.gz}
-mkdir trim
 fastp -i ${i} -I ${j} -o trim/${i/_R1.fastq.gz/trim_R1.fastq.gz} -O trim/${j/_R2.fastq.gz/_trim_R2.fastq.gz} -w 16
 wait
-mkdir QC
-fastqc -o QC trim/*.gz
+fastqc -t 32 -o QC trim/*.gz
 wait
-multiqc QC/
+multiqc QC/*
 done
 ```
 Press Ctrl + X. Type Yes, name the file "trimQC.sh"
