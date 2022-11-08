@@ -63,6 +63,20 @@ rm -rf test
 ls
 ```
 
+### Activating conda and creating an environment
+Exectue the following commands:
+```
+source /mnt/data1/home/opt/miniconda/bin/activate
+```
+Lets create an environment with all the packages needed for the workshop
+```
+conda create -n workshop fastp samtools bwa ivar bedtools mafft fasttree
+```
+```
+conda activate workshop
+```
+Now we are readying to do some bioinformatics!!!
+
 ### Quality Control Assessment and Trimming of Sequencing Reads
 
 A FASTQ file is a text file that contains the sequence data.
