@@ -111,7 +111,7 @@ fastp -i ${i} -I ${j} -o trim/${i/_R1.fastq.gz/trim_R1.fastq.gz} -O trim/${j/_R2
 wait
 fastqc -t 32 -o QC trim/*.gz
 wait
-multiqc QC/*
+multiqc QC/
 done
 ```
 Press Ctrl + X. Type Yes, name the file "trimQC.sh"
@@ -157,18 +157,23 @@ nano
 Paste this code:
 ```
 #!/bin/bash
-for i in *_trim_R1.fastq.gz
+#$1 folder containing trimmed reads
+for i in $1/*_trim_R1.fastq.gz
 do
 prefix=$(basename ${i/_trim_R1.fastq.gz})
 j=${i/_trim_R1.fastq.gz/_trim_R2.fastq.gz}
-mkdir sam
-bwa mem -t 16 -o sam/${i/_trim_R1.fastq.gz/.sam} /data/ref.fasta ${i} ${j}
-samtools view -h -b sam/${i/_trim_R1.fastq.gz/.sam}| samtools sort -@16 -o sam/${i/_trim_R1.fastq.gz/.bam}
-samtools mpileup -aa -A -d 0 -Q 0 sam/${i/_trim_R1.fastq.gz/.bam} | ivar consensus -p ${prefix}
+mkdir -p sam
+mkdir -p bam
+bwa mem -t 16 -o sam/${prefix}.sam /mnt/data1/home/ref/ref.fasta ${i} ${j}
+samtools view -h -b sam/${prefix}.sam| samtools sort -@16 -o bam/${prefix}.bam
+samtools mpileup -aa -A -d 0 -Q 0 bam/${prefix}.bam} | ivar consensus -p ${prefix}
 lofreq call -f ref.fa -o ${prefix}.vcf sam/${i/_trim_R1.fastq.gz/.bam}
 wait
-bedtools getfasta -fi ref.fa -bed ${i/_trim_R1.fastq.gz/.vcf} -fo ${i/_trim_R1.fastq.gz/_vcf.fasta}
-grep -v '>' ${i/_trim_R1.fastq.gz/_vcf.fasta} | tr -d  '\n' > ${i/_trim_R1.fastq.gz/_vcf.fasta}
+bedtools getfasta -fi /mnt/data1/home/ref/ref.fasta -bed ${prefix}.vcf -fo ${prefix}_vcf.fasta
+grep -v '>' ${prefix}_vcf.fasta | tr -d  '\n' > ${prefix}_vcf.fasta}
+sed -e '1i\>' ${prefix}_vcf.fasta > ${prefix}_snp.fasta
+sed -i "s/^>.*/&${prefix}/" ${prefix}_snp.fasta
+
 done
 ```
 Press Ctrl + X. Type Yes, name the file "analysis.sh"
@@ -190,10 +195,10 @@ ls
 We are going to use MAFFT to do the multiple sequence alignment and fasttree to generate a phylogenetic tree.
 Run the following commands:
 ```
-cat *_vcf.fasta > all.fasta
+cat *_snp.fasta > all.fasta
 ```
 ```
-mafft -t 44 all.fasta > align.fasta
+mafft --thread 44 all.fasta > align.fasta
 ```
 ```
 FastTree -nt align.fasta > align.tree
@@ -202,10 +207,10 @@ FastTree -nt align.fasta > align.tree
 Open a new terminal and transfer the align.tree file to your personal computer
 Go to http://etetoolkit.org/treeview/
 Upload your align.tree file and press view tree.
-Congratulations, we have generated a phylogenetic tree.
-Scientist use these trees to trace origins and spread of outbreaks, relatedness of different species and for identification purposes.
+Congratulations, we have generated a phylogenetic tree based on the individual Legionella species SNVs.
+Scientist use these trees to trace origins and spread of outbreaks.
 From this workshop, we can use the tree to see which Legionella strains our samples are related to.
-Thank you for participating in the workshop and please fill out a survey.
+Thank you for participating in the workshop.
 ```
 
 
