@@ -66,7 +66,7 @@ ls
 ### Activating conda and creating an environment
 Exectue the following commands:
 ```
-source /mnt/data1/home/opt/miniconda/bin/activate
+source ../miniconda/bin/activate
 ```
 Lets create an environment with all the packages needed for the workshop
 ```
@@ -89,7 +89,10 @@ A FASTQ file is a text file that contains the sequence data.
 
 [![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fgencoded.com%2Fwp-content%2Fuploads%2F2020%2F05%2Ffastq_format_explained-3.png%3Fssl%3D1&f=1&nofb=1&ipt=48754aaa7290bcaf4d9aa3c070fde25c449e2451a8d775d00849567eb23ba5b9&ipo=images)
 
-The fastq files are in a folder "Data", located at:
+The fastq files are in a folder "data", located one directory above your home directory. Lets copy it to your directory.
+```
+cp -r ../data .
+```
 These are the raw fastq files that have not been trimmed of low quality data and sequencing adapters/indexes.
 We are going to trim and assess the quality of the trimmed reads.
 We will be using fastp to trim the reads, FastQC and MultiQC to assess the reads quality.
@@ -143,7 +146,7 @@ Lets execute the script.
 We are going to use Burrows-Wheeler aligner to align our reads and ivar to generate a consensus genome. We will then use bcftools to generate a variant calling file (vcf), which contains single nucleotide polymorphisms of each sample compared to the reference genome. Finally, we will convert the vcf files to fasta files, perform a multiple sequence alignment and end the workshop with phylogenetic analysis.
 
 First, we need to create an index of our reference genome.
-Run the following commands in the folder containing the reference genome:
+Run the following commands in the ref folder, which is inside the data folder:
 ```
 bwa index ref.fasta ref.fasta
 ```
@@ -164,12 +167,12 @@ prefix=$(basename ${i/_trim_R1.fastq.gz})
 j=${i/_trim_R1.fastq.gz/_trim_R2.fastq.gz}
 mkdir -p sam
 mkdir -p bam
-bwa mem -t 16 -o sam/${prefix}.sam /mnt/data1/home/ref/ref.fasta ${i} ${j}
+bwa mem -t 16 -o sam/${prefix}.sam /ref/ref.fasta ${i} ${j}
 samtools view -h -b sam/${prefix}.sam| samtools sort -@16 -o bam/${prefix}.bam
 samtools mpileup -aa -A -d 0 -Q 0 bam/${prefix}.bam} | ivar consensus -p ${prefix}
-lofreq call -f ref.fa -o ${prefix}.vcf sam/${i/_trim_R1.fastq.gz/.bam}
+lofreq call -f /ref/ref.fasta -o ${prefix}.vcf sam/${i/_trim_R1.fastq.gz/.bam}
 wait
-bedtools getfasta -fi /mnt/data1/home/ref/ref.fasta -bed ${prefix}.vcf -fo ${prefix}_vcf.fasta
+bedtools getfasta -fi /ref/ref.fasta -bed ${prefix}.vcf -fo ${prefix}_vcf.fasta
 grep -v '>' ${prefix}_vcf.fasta | tr -d  '\n' > ${prefix}_vcf.fasta}
 sed -e '1i\>' ${prefix}_vcf.fasta > ${prefix}_snp.fasta
 sed -i "s/^>.*/&${prefix}/" ${prefix}_snp.fasta
