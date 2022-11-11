@@ -154,7 +154,7 @@ bwa index ref.fasta ref.fasta
 ```
 ls
 ```
-Now we will align the reads to the indexed reference genome.
+Now we will align the reads to the indexed reference genome. Make sure you are in the data directory and not the ref directory!
 ```
 nano
 ```
@@ -168,12 +168,12 @@ prefix=$(basename ${i/_trim_R1.fastq.gz})
 j=${i/_trim_R1.fastq.gz/_trim_R2.fastq.gz}
 mkdir -p sam
 mkdir -p bam
-bwa mem -t 16 -o sam/${prefix}.sam /ref/ref.fasta ${i} ${j}
+bwa mem -t 16 -o sam/${prefix}.sam /home/ref/ref.fasta ${i} ${j}
 samtools view -h -b sam/${prefix}.sam| samtools sort -@16 -o bam/${prefix}.bam
 samtools mpileup -aa -A -d 0 -Q 0 bam/${prefix}.bam} | ivar consensus -p ${prefix}
-lofreq call -f /ref/ref.fasta -o ${prefix}.vcf sam/${i/_trim_R1.fastq.gz/.bam}
+lofreq call -f /home/ref/ref.fasta -o ${prefix}.vcf bam/${prefix}.bam
 wait
-bedtools getfasta -fi /ref/ref.fasta -bed ${prefix}.vcf -fo ${prefix}_vcf.fasta
+bedtools getfasta -fi /home/ref/ref.fasta -bed ${prefix}.vcf -fo ${prefix}_vcf.fasta
 grep -v '>' ${prefix}_vcf.fasta | tr -d  '\n' > ${prefix}_vcf.fasta}
 sed -e '1i\>' ${prefix}_vcf.fasta > ${prefix}_snp.fasta
 sed -i "s/^>.*/&${prefix}/" ${prefix}_snp.fasta
@@ -191,7 +191,7 @@ chmod u+x analysis.sh
 ls
 ```
 ```
-./analysis.sh
+./analysis.sh trim
  ```
 
  ### Multiple Sequence Alignment and Phylogenetic Analysis based on SNPs.
