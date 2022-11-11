@@ -68,7 +68,7 @@ Exectue the following commands:
 ```
 source ../miniconda/bin/activate
 ```
-Lets create an environment with all the packages needed for the workshop
+Lets activate our environment for the workshop which contains all the packages needed 
 ```
 conda config --add channels defaults
 conda config --add channels bioconda
@@ -76,11 +76,9 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 ```
-conda create -n workshop -c bioconda fastp samtools bwa ivar bedtools mafft fasttree
-```
-```
 conda activate workshop
 ```
+
 Now we are readying to do some bioinformatics!!!
 
 ### Quality Control Assessment and Trimming of Sequencing Reads
@@ -113,8 +111,6 @@ j=${i/_R1.fastq.gz/_R2.fastq.gz}
 fastp -i ${i} -I ${j} -o trim/${i/_R1.fastq.gz/trim_R1.fastq.gz} -O trim/${j/_R2.fastq.gz/_trim_R2.fastq.gz} -w 16
 wait
 fastqc -t 32 -o QC trim/*.gz
-wait
-multiqc QC/
 done
 ```
 Press Ctrl + X. Type Yes, name the file "trimQC.sh"
@@ -133,10 +129,15 @@ Lets execute the script.
 ./trimQC.sh
  ```
  
- After the script is running, we should have 2 new folders (trim and QC) created. Lets view the quality of our trimmed reads. Since our remote server is headless, we cannot view the files on the server, so we need to transfer the files to our personal computer/laptop to view.
+ After the script is running, we should have 2 new folders (trim and QC) created. 
+ Lets view the quality of our trimmed reads. We need to combine all the results into one file using MultiQC. Run this command:
+ ```
+ multiqc QC
+ ```
+ Since our remote server is headless, we cannot view the files on the server, so we need to transfer the files to our personal computer/laptop to view.
  Open a new terminal and enter:
  ```
- scp {username}@10.238.4.152:/home/QC/multiqc* .
+ scp {username}@10.238.4.152:/home/{username}/data/multiqc_report.html .
  ```
  Open the downloaded html file in a web browser.
  
