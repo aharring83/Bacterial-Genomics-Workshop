@@ -66,9 +66,12 @@ ls
 ### Activating conda and creating an environment
 Exectue the following commands:
 ```
+tmux
+```
+```
 source ../miniconda/bin/activate
 ```
-Lets activate our environment for the workshop which contains all the packages needed 
+Lets activate our environment for the workshop which has all the packages we need for the workshop installed already 
 ```
 conda config --add channels defaults
 conda config --add channels bioconda
@@ -108,7 +111,7 @@ mkdir -p QC
 for i in *_R1.fastq.gz
 do
 j=${i/_R1.fastq.gz/_R2.fastq.gz}
-fastp -i ${i} -I ${j} -o trim/${i/_R1.fastq.gz/trim_R1.fastq.gz} -O trim/${j/_R2.fastq.gz/_trim_R2.fastq.gz} -w 16
+fastp -i ${i} -I ${j} -o trim/${i/_R1.fastq.gz/_trim_R1.fastq.gz} -O trim/${j/_R2.fastq.gz/_trim_R2.fastq.gz} -w 16
 wait
 fastqc -t 32 -o QC trim/*.gz
 done
@@ -178,6 +181,36 @@ grep -v '>' ${prefix}_vcf.fasta | tr -d  '\n' > ${prefix}_vcf.fasta}
 sed -e '1i\>' ${prefix}_vcf.fasta > ${prefix}_snp.fasta
 sed -i "s/^>.*/&${prefix}/" ${prefix}_snp.fasta
 
+done
+
+
+
+#!/bin/bash
+# folder containing trimmed reads is $1
+# output folder is $2
+mkdir -p $2/sam
+mkdir -p $2/bam
+mkdir -p $2/vcf
+mkdir -p $2/fasta
+for i in $1/*_trim_R1.fastq.gz
+do
+prefix=$(basename ${i/_trim_R1.fastq.gz})
+j=${i/_trim_R1.fastq.gz/_trim_R2.fastq.gz}
+sam=$2/sam/${prefix}.sam
+bam=$2/bam/${prefix}.bam
+vcf=$2/vcf/${prefix}.vcf
+fasta=$2/fasta/${prefix}_vcf.fasta
+fastatree=$2/fasta/${prefix}_tree.fasta
+fastasnp=$2/fasta/${prefix}_snp.fasta
+bwa mem -t 16 -o ${sam} /home/ref/ref.fasta ${i} ${j}
+samtools view -h -b ${sam}| samtools sort -@16 -o ${bam}
+#samtools mpileup -aa -A -d 0 -Q 0 ${bam} | ivar consensus -p ${prefix}
+lofreq call -f /home/ref/ref.fasta -o ${vcf} ${bam}
+wait
+bedtools getfasta -fi /home/ref/ref.fasta -bed ${vcf} -fo ${fasta}
+grep -v '>' ${fasta} | tr -d  '\n' > ${fastatree}
+sed -e '1i\>' ${fastatree} > ${fastasnp}
+sed -i "s/^>.*/&${prefix}/" ${fastasnp}
 done
 ```
 Press Ctrl + X. Type Yes, name the file "analysis.sh"
