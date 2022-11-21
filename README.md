@@ -164,75 +164,104 @@ nano
 Paste this code:
 ```
 #!/bin/bash
-#$1 folder containing trimmed reads
-for i in $1/*_trim_R1.fastq.gz
-do
-prefix=$(basename ${i/_trim_R1.fastq.gz})
-j=${i/_trim_R1.fastq.gz/_trim_R2.fastq.gz}
+# folder containing trimmed reads is $1
 mkdir -p sam
 mkdir -p bam
-bwa mem -t 16 -o sam/${prefix}.sam /home/ref/ref.fasta ${i} ${j}
-samtools view -h -b sam/${prefix}.sam| samtools sort -@16 -o bam/${prefix}.bam
-samtools mpileup -aa -A -d 0 -Q 0 bam/${prefix}.bam} | ivar consensus -p ${prefix}
-lofreq call -f /home/ref/ref.fasta -o ${prefix}.vcf bam/${prefix}.bam
-wait
-bedtools getfasta -fi /home/ref/ref.fasta -bed ${prefix}.vcf -fo ${prefix}_vcf.fasta
-grep -v '>' ${prefix}_vcf.fasta | tr -d  '\n' > ${prefix}_vcf.fasta}
-sed -e '1i\>' ${prefix}_vcf.fasta > ${prefix}_snp.fasta
-sed -i "s/^>.*/&${prefix}/" ${prefix}_snp.fasta
 
-done
-
-
-
-#!/bin/bash
-# folder containing trimmed reads is $1
-# output folder is $2
-mkdir -p $2/sam
-mkdir -p $2/bam
-mkdir -p $2/vcf
-mkdir -p $2/fasta
 for i in $1/*_trim_R1.fastq.gz
 do
 prefix=$(basename ${i/_trim_R1.fastq.gz})
 j=${i/_trim_R1.fastq.gz/_trim_R2.fastq.gz}
-sam=$2/sam/${prefix}.sam
-bam=$2/bam/${prefix}.bam
-vcf=$2/vcf/${prefix}.vcf
-fasta=$2/fasta/${prefix}_vcf.fasta
-fastatree=$2/fasta/${prefix}_tree.fasta
-fastasnp=$2/fasta/${prefix}_snp.fasta
+sam=sam/${prefix}.sam
+bam=bam/${prefix}.bam
 bwa mem -t 16 -o ${sam} /home/ref/ref.fasta ${i} ${j}
 samtools view -h -b ${sam}| samtools sort -@16 -o ${bam}
-#samtools mpileup -aa -A -d 0 -Q 0 ${bam} | ivar consensus -p ${prefix}
-lofreq call -f /home/ref/ref.fasta -o ${vcf} ${bam}
-wait
-bedtools getfasta -fi /home/ref/ref.fasta -bed ${vcf} -fo ${fasta}
-grep -v '>' ${fasta} | tr -d  '\n' > ${fastatree}
-sed -e '1i\>' ${fastatree} > ${fastasnp}
-sed -i "s/^>.*/&${prefix}/" ${fastasnp}
 done
 ```
-Press Ctrl + X. Type Yes, name the file "analysis.sh"
+Press Ctrl + X. Type Yes, name the file "map.sh"
 ```
 ls
 ```
 ```
-chmod u+x analysis.sh
+chmod u+x map.sh
 ```
 ```
 ls
 ```
 ```
-./analysis.sh trim
+./map.sh trim
  ```
+We aligned our sequencing reads to the reference genome. Now we are going to determine each sample single nucleotide variant profile compared to the reference genome.
+ ```
+ nano
+ ```
+ Paste this code:
+ ```
+ #!/bin/bash
+# folder containing trimmed reads is $1
+mkdir -p vcf
+for i in $1/*.bam
+do
+prefix=$(basename ${i/.bam})
+vcf=vcf/${prefix}.vcf
+lofreq call -f /home/ref/ref.fasta -o ${vcf} ${i}
+done
+```
+Press Ctrl + X. Type Yes, name the file "snp.sh"
+```
+chmod u+x snp.sh
+```
+```
+./snp.sh bam
+```
+We generated a variant calling file (vcf) containing each sample single nucleotide variant information. We need to convert this information into a fasta sequence. Go into the vcf folder
+```
+nano
+```
+Paste this code:
+```
+#!/bin/bash
+for i in *.vcf
+do
+bedtools getfasta -fi /home/ref/ref.fasta -bed ${i} -fo ${i/.vcf/_snp.fasta}
+grep -v '>' ${i/.vcf/_snp.fasta} | tr -d  '\n' > ${i/.vcf/_tree.fasta}
+sed -i '1i\>' ${i/.vcf/_tree.fasta}
+sed -i "s/^>.*/&${i}/" ${i/.vcf/_tree.fasta}
+done
+```
+Press Ctrl + X. Type Yes, name the file "fasta.sh"
+```
+chmod u+x fasta.sh
+```
+```
+./fasta.sh
+```
+We converted the vcf information into a fasta file. We will now combined all the samples fasta files into one file.
+```
+nano
+```
+Paste this code:
+```
+#!/bin/bash
+for i in *tree.fasta
+do
+(cat "${i}";echo) >> all.fasta
+done
+```
+Press Ctrl + X. Type Yes, name the file "combine.sh"
+```
+chmod u+x combine.sh
+```
+```
+./combine.sh
+```
 
  ### Multiple Sequence Alignment and Phylogenetic Analysis based on SNPs.
  
 We are going to use MAFFT to do the multiple sequence alignment and fasttree to generate a phylogenetic tree.
 Run the following commands:
 ```
-cat *_snp.fasta > all.fasta
+cat *_tree.fasta > all.fasta
 ```
 ```
 mafft --thread 44 all.fasta > align.fasta
