@@ -180,24 +180,18 @@ done
 ```
 Press Ctrl + X. Type Yes, name the file "map.sh"
 ```
-ls
-```
-```
 chmod u+x map.sh
 ```
 ```
-ls
-```
-```
 ./map.sh trim
- ```
-We aligned our sequencing reads to the reference genome. Now we are going to determine each sample single nucleotide variant profile compared to the reference genome.
- ```
- nano
- ```
- Paste this code:
- ```
- #!/bin/bash
+```
+We have aligned our sequencing reads to the reference genome. Now we are going to determine each sample's single nucleotide variant/polymorphism profile compared to the reference genome.
+```
+nano
+```
+Paste this code:
+```
+#!/bin/bash
 # folder containing trimmed reads is $1
 mkdir -p vcf
 for i in $1/*.bam
@@ -214,7 +208,7 @@ chmod u+x snp.sh
 ```
 ./snp.sh bam
 ```
-We generated a variant calling file (vcf) containing each sample single nucleotide variant information. We need to convert this information into a fasta sequence. Go into the vcf folder
+We generated a variant calling file (vcf) containing each sample's SNP information. We need to convert this information into a FASTA formatted sequence. Go into the vcf folder
 ```
 nano
 ```
@@ -236,7 +230,7 @@ chmod u+x fasta.sh
 ```
 ./fasta.sh
 ```
-We converted the vcf information into a fasta file. We will now combined all the samples fasta files into one file.
+We converted the vcf information into a FASTA formatted file. We will combined all the samples fasta files into one fasta file.
 ```
 nano
 ```
@@ -268,6 +262,9 @@ mafft --thread 44 all.fasta > align.fasta
 ```
 ```
 FastTree -nt align.fasta > align.tree
+```
+```
+exit
 ```
 ```
 Open a new terminal and transfer the align.tree file to your personal computer
