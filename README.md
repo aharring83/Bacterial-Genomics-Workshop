@@ -7,7 +7,8 @@
 ------------
 # Requirements:
 Laptop (Mac or PC)
-If you have a PC laptop, please install gitbash or putty prior to the workshop.
+If you have a PC laptop, please have gitbash installed prior to starting.
+https://gitforwindows.org/
 
 ------------
 
@@ -17,7 +18,7 @@ Most bioinformatic tools use the CLI. The CLI is a way of interacting with a com
 On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer.
 On a PC/Windows, you’ll need to download powershell or gitbash to access the shell.
 
-To save time, we will be working on a remote server, provided by CyVerse (located in Arizona), where all the necessary data and software is available. 
+To save time, we will be working on a remote server, provided by the Nevada Institue of Personalized Medicine (NIPM), where all the necessary data and software is available. 
 
 Here is a cheatsheet to help you with using text commands to interact with the CLI.
 
@@ -255,10 +256,7 @@ chmod u+x combine.sh
 We are going to use MAFFT to do the multiple sequence alignment and fasttree to generate a phylogenetic tree.
 Run the following commands:
 ```
-cat *_tree.fasta > all.fasta
-```
-```
-mafft --thread 44 all.fasta > align.fasta
+mafft --thread 88 all.fasta > align.fasta
 ```
 ```
 FastTree -nt align.fasta > align.tree
@@ -268,9 +266,9 @@ exit
 ```
 ```
 Open a new terminal and transfer the align.tree file to your personal computer
-Go to http://etetoolkit.org/treeview/
-Upload your align.tree file and press view tree.
-Congratulations, we have generated a phylogenetic tree based on the individual Legionella species SNVs.
+Go to https://icytree.org/
+Upload your align.tree file and view your tree.
+Congratulations, we have generated a phylogenetic tree of our site specific Legionella isolates based on their SNVs and compared them to a isolate of a recent Legionella outbreak in Los Angeles.
 Scientist use these trees to trace origins and spread of outbreaks.
 From this workshop, we can use the tree to see which Legionella strains our samples are related to.
 Thank you for participating in the workshop.
