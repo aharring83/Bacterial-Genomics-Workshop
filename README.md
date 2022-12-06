@@ -22,7 +22,7 @@ To save time, we will be working on a remote server, provided by the Nevada Inst
 
 Here is a cheatsheet to help you with using text commands to interact with the CLI.
 
-![](https://i.postimg.cc/5NMJFpfB/10-Linux-Unix-Command-Cheat-Sheet-011.jpg)
+![](https://i.postimg.cc/YCnT8xBy/10-Linux-Unix-Command-Cheat-Sheet-021-1.jpg)
 
 Lets begin using the CLI!!!!
 
