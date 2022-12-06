@@ -16,7 +16,7 @@ https://gitforwindows.org/
 Most bioinformatic tools use the CLI. The CLI is a way of interacting with a computer's operating system using text representation of files, folders, etc. This differs from the commonly used graphical user interface (GUI), where we can see images linked to files, folders, etc. In order to access the CLI, we have to invoke a program, shell, which is a CLI program that allows us to control the computer by typing instructions with a keyboard.
 
 On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer.
-On a PC/Windows, you’ll need to download powershell or gitbash to access the shell.
+On a PC/Windows, you’ll can use powershell to access the shell.
 
 To save time, we will be working on a remote server, provided by the Nevada Institue of Personalized Medicine (NIPM), where all the necessary data and software is available. 
 
@@ -84,10 +84,13 @@ conda activate workshop
 ```
 
 Now we are readying to do some bioinformatics!!!
-We are going to participate in a Legionella outbreak exercise. A small outbreak of Legionnaires' disease has been confirmed by the Southern Nevada Health District and efforts are ongoing to track and contain the outbreak. Legionnaire's disease is a bacterial respiratory disease spread through the inhalation of water droplets. Legionella pneumonphila, ubuquitous in the environment, is the species responsible for causing the disease and is known to colonize the plumbing systems of buildings leading to outbreaks. We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to each other and a reference strain linked to an ongoing outbreak in Los Angeles County.
-```
+We are going to participate in a Legionella surveillance study. A small outbreak of Legionnaires' disease has been confirmed by the Southern Nevada Health District and efforts are ongoing to track and contain the outbreak. Legionnaire's disease is a bacterial respiratory disease with flu-like sympthoms caused by _Legionella pneumonphila_, and is transmitted through the inhalation of contaminated water droplets. _Legionella pneumonphila_ is ubiquitous in the environmental waters and colonize municipal water pipes which supply water to residential and commercial buildings. We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to a strain linked to an ongoing outbreak in Los Angeles County.
+
 [![](https://i.postimg.cc/cHT4XxpZ/PE0520-Egg-Slide-5.jpg)
- ```
+
+
+
+
 
 ### Quality Control Assessment and Trimming of Sequencing Reads
 
