@@ -21,7 +21,8 @@ On a PC/Windows, you’ll can use powershell to access the shell.
 To save time, we will be working on a remote server, provided by the Nevada Institue of Personalized Medicine (NIPM), where all the necessary data and software is available. 
 
 Here is a cheatsheet to help you with using text commands to interact with the CLI.
-![](https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg)](http://https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg)
+
+![](https://i.postimg.cc/5NMJFpfB/10-Linux-Unix-Command-Cheat-Sheet-011.jpg)
 
 Lets begin using the CLI!!!!
 
