@@ -86,7 +86,7 @@ conda activate workshop
 Now we are readying to do some bioinformatics!!!
 We are going to participate in a Legionella outbreak exercise. A small outbreak of Legionnaires' disease has been confirmed by the Southern Nevada Health District and efforts are ongoing to track and contain the outbreak. Legionnaire's disease is a bacterial respiratory disease spread through the inhalation of water droplets. Legionella pneumonphila, ubuquitous in the environment, is the species responsible for causing the disease and is known to colonize the plumbing systems of buildings leading to outbreaks. We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to each other and a reference strain linked to an ongoing outbreak in Los Angeles County.
 ```
-[![](https://www.phcppros.com/ext/resources/PE/May-2020/PE0520_Egg-Slide-5.jpg)
+[![](https://ibb.co/M8bHtj3)
  ```
 
 ### Quality Control Assessment and Trimming of Sequencing Reads
