@@ -86,7 +86,7 @@ conda activate workshop
 Now we are readying to do some bioinformatics!!!
 We are going to participate in a Legionella surveillance study. A small outbreak of Legionnaires' disease has been confirmed by the Southern Nevada Health District and efforts are ongoing to track and contain the outbreak. Legionnaire's disease is a bacterial respiratory disease with flu-like sympthoms caused by _Legionella pneumonphila_, and is transmitted through the inhalation of contaminated water droplets. _Legionella pneumonphila_ is ubiquitous in the environmental waters and colonize municipal water pipes which supply water to residential and commercial buildings. We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to a strain linked to an ongoing outbreak in Los Angeles County.
 
-[![](https://ibb.co/qNx5Lh9)
+[![](https://i.postimg.cc/1zdPgHjQ/How-Legionella-Affects-Building-Water-Systems-and-People.png)
 
 
 ### Quality Control Assessment and Trimming of Sequencing Reads
@@ -152,8 +152,9 @@ Lets execute the script.
  
  ### Reference-based genome assembly
  
-[![](https://i.ibb.co/jLMwQt0/Picture1.png)
-We are going to use Burrows-Wheeler aligner to align our reads and ivar to generate a consensus genome. We will then use bcftools to generate a variant calling file (vcf), which contains single nucleotide polymorphisms of each sample compared to the reference genome. Finally, we will convert the vcf files to fasta files, perform a multiple sequence alignment and end the workshop with phylogenetic analysis.
+[![](https://i.postimg.cc/HsSYMXnB/Screenshot-2022-12-06-152537.png)
+
+We are going to use Burrows-Wheeler aligner to align our reads. We will then use bcftools to generate a variant calling file (vcf), which contains single nucleotide polymorphisms of each sample compared to the reference genome. Finally, we will convert the vcf files to fasta files, perform a multiple sequence alignment and end the workshop with phylogenetic analysis.
 
 First, we need to create an index of our reference genome.
 Run the following commands in the ref folder, which is inside the data folder:
