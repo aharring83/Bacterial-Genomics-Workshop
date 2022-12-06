@@ -21,8 +21,7 @@ On a PC/Windows, you’ll can use powershell to access the shell.
 To save time, we will be working on a remote server, provided by the Nevada Institue of Personalized Medicine (NIPM), where all the necessary data and software is available. 
 
 Here is a cheatsheet to help you with using text commands to interact with the CLI.
-
-[![https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg)](http://https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg]()
+![](https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg)](http://https://rumorscity.com/wp-content/uploads/2014/08/10-Linux-Unix-Command-Cheat-Sheet-021.jpg)
 
 Lets begin using the CLI!!!!
 
@@ -86,14 +85,12 @@ conda activate workshop
 Now we are readying to do some bioinformatics!!!
 We are going to participate in a Legionella surveillance study. A small outbreak of Legionnaires' disease has been confirmed by the Southern Nevada Health District and efforts are ongoing to track and contain the outbreak. Legionnaire's disease is a bacterial respiratory disease with flu-like sympthoms caused by _Legionella pneumonphila_, and is transmitted through the inhalation of contaminated water droplets. _Legionella pneumonphila_ is ubiquitous in the environmental waters and colonize municipal water pipes which supply water to residential and commercial buildings. We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to a strain linked to an ongoing outbreak in Los Angeles County.
 
-[![](https://i.postimg.cc/1zdPgHjQ/How-Legionella-Affects-Building-Water-Systems-and-People.png)
-
+![](https://i.postimg.cc/1zdPgHjQ/How-Legionella-Affects-Building-Water-Systems-and-People.png)
 
 ### Quality Control Assessment and Trimming of Sequencing Reads
 
 A FASTQ file is a text file that contains the sequence data.
-
-[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fgencoded.com%2Fwp-content%2Fuploads%2F2020%2F05%2Ffastq_format_explained-3.png%3Fssl%3D1&f=1&nofb=1&ipt=48754aaa7290bcaf4d9aa3c070fde25c449e2451a8d775d00849567eb23ba5b9&ipo=images)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fgencoded.com%2Fwp-content%2Fuploads%2F2020%2F05%2Ffastq_format_explained-3.png%3Fssl%3D1&f=1&nofb=1&ipt=48754aaa7290bcaf4d9aa3c070fde25c449e2451a8d775d00849567eb23ba5b9&ipo=images)](http://https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fgencoded.com%2Fwp-content%2Fuploads%2F2020%2F05%2Ffastq_format_explained-3.png%3Fssl%3D1&f=1&nofb=1&ipt=48754aaa7290bcaf4d9aa3c070fde25c449e2451a8d775d00849567eb23ba5b9&ipo=images)
 
 The fastq files are in a folder "data", located one directory above your home directory. Lets copy it to your directory.
 ```
@@ -151,8 +148,7 @@ Lets execute the script.
  Open the downloaded html file in a web browser.
  
  ### Reference-based genome assembly
- 
-[![](https://i.postimg.cc/HsSYMXnB/Screenshot-2022-12-06-152537.png)
+![](https://i.postimg.cc/HsSYMXnB/Screenshot-2022-12-06-152537.png)
 
 We are going to use Burrows-Wheeler aligner to align our reads. We will then use bcftools to generate a variant calling file (vcf), which contains single nucleotide polymorphisms of each sample compared to the reference genome. Finally, we will convert the vcf files to fasta files, perform a multiple sequence alignment and end the workshop with phylogenetic analysis.
 
