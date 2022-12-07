@@ -65,14 +65,14 @@ ls
 ```
 
 ### Activating conda and creating an environment
-Exectue the following commands:
+Execute the following commands:
 ```
 tmux
 ```
 ```
 source ../miniconda/bin/activate
 ```
-Lets activate our environment for the workshop which has all the packages we need for the workshop installed already 
+Lets activate our environment for the workshop which has all the packages we need for the workshop installed
 ```
 conda config --add channels defaults
 conda config --add channels bioconda
@@ -85,7 +85,7 @@ conda activate workshop
 
 Now we are readying to do some bioinformatics!!!
 
-We are going to participate in a Legionella surveillance study. The Southern Nevada Health District and Southern Nevada Water Authority routinely perform surveillance of water in order to ensure the safety of public health. Legionnaire's disease is a bacterial respiratory disease with flu-like sympthoms caused by _Legionella pneumonphila_, and infects people through the inhalation of contaminated water droplets. _Legionella pneumonphila_ is ubiquitous in environmental waters and normal flora found in municipal water pipes. We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to a strain linked to an ongoing outbreak in Los Angeles County.
+We are going to participate in a Legionella surveillance study. The Southern Nevada Health District and Southern Nevada Water Authority routinely perform surveillance of premise plumbing water (building) in order to ensure the safety of public health. Legionnaire's disease is a bacterial respiratory disease with flu-like sympthoms caused by _Legionella pneumonphila_, and infects people through the inhalation of contaminated water droplets. _Legionella pneumonphila_ is ubiquitous in environmental waters and normal flora found in municipal water pipes. We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to a strain linked to an ongoing outbreak in Los Angeles County.
 
 ![](https://i.postimg.cc/1zdPgHjQ/How-Legionella-Affects-Building-Water-Systems-and-People.png)
 
