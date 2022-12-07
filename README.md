@@ -1,7 +1,7 @@
 # Bacterial-Genomics-Workshop
 - Welcome to the bacterial genomics workshop where we will learn how to process sequencing data, assemble genomes and build phylogenetic trees.
 - We will being using a remote server to do the analysis but the procedures can be performed on a personal laptop with conda installed. 
-(- Instructions can on installing conda can be found here: https://github.com/rltillett/conda_notes
+(- Instructions on installing conda can be found here: https://github.com/rltillett/conda_notes
 
 
 ------------
@@ -28,7 +28,7 @@ Lets begin using the CLI!!!!
 
 ------------ 
 
-First we need to connect to the remote server using secure shell (ssh). For Macs, open a terminal. For PC, open a terminal using gitbash or putty. Type the following and press enter:
+First we need to connect to the remote server using secure shell (ssh). For Macs, open a terminal. For PC, open a terminal using powershell or gitbash. Type the following in the terminal:
 ```
 ssh {username}@10.238.4.152
 ```
@@ -84,7 +84,8 @@ conda activate workshop
 ```
 
 Now we are readying to do some bioinformatics!!!
-We are going to participate in a Legionella surveillance study. A small outbreak of Legionnaires' disease has been confirmed by the Southern Nevada Health District and efforts are ongoing to track and contain the outbreak. Legionnaire's disease is a bacterial respiratory disease with flu-like sympthoms caused by _Legionella pneumonphila_, and is transmitted through the inhalation of contaminated water droplets. _Legionella pneumonphila_ is ubiquitous in the environmental waters and colonize municipal water pipes which supply water to residential and commercial buildings. We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to a strain linked to an ongoing outbreak in Los Angeles County.
+
+We are going to participate in a Legionella surveillance study. The Southern Nevada Health District and Southern Nevada Water Authority routinely perform surveillance of water in order to ensure the safety of public health. Legionnaire's disease is a bacterial respiratory disease with flu-like sympthoms caused by _Legionella pneumonphila_, and infects people through the inhalation of contaminated water droplets. _Legionella pneumonphila_ is ubiquitous in environmental waters and normal flora found in municipal water pipes. We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to a strain linked to an ongoing outbreak in Los Angeles County.
 
 ![](https://i.postimg.cc/1zdPgHjQ/How-Legionella-Affects-Building-Water-Systems-and-People.png)
 
@@ -260,7 +261,7 @@ chmod u+x combine.sh
 
  ### Multiple Sequence Alignment and Phylogenetic Analysis based on SNPs.
  
-We are going to use MAFFT to do the multiple sequence alignment and fasttree to generate a phylogenetic tree.
+We are going to use MAFFT to do the multiple sequence alignment and FastTree to generate a phylogenetic tree.
 Run the following commands:
 ```
 mafft --thread 88 all.fasta > align.fasta
@@ -276,8 +277,8 @@ Open a new terminal and transfer the align.tree file to your personal computer
 Go to https://icytree.org/
 Upload your align.tree file and view your tree.
 Congratulations, we have generated a phylogenetic tree of our site specific Legionella isolates based on their SNVs and compared them to a isolate of a recent Legionella outbreak in Los Angeles.
-Scientist use these trees to trace origins and spread of outbreaks.
-From this workshop, we can use the tree to see which Legionella strains our samples are related to.
+Scientist use these trees to trace the origin and spread of outbreaks.
+We can look at our tree to see how Legionella from different buildings in the Las Vegas Valley are related to each other and the outbreak strain in Los Angeles.
 Thank you for participating in the workshop.
 ```
 
