@@ -1,22 +1,22 @@
 # Bacterial-Genomics-Workshop
-- Welcome to the bacterial genomics workshop where we will learn how to process sequencing data, assemble genomes and build phylogenetic trees.
-- We will being using a remote server to do the analysis but the procedures can be performed on a personal laptop with conda installed. 
+- Welcome to the bacterial genomics workshop where we will cover how to process sequencing data, assemble genomes and build phylogenetic trees.
+- We will be using a remote server to do the analysis but this workshop can be performed on a personal laptop with conda installed (will take longer to complete the workshop). 
 - Instructions on installing conda can be found here: https://github.com/rltillett/conda_notes
 
 
 ------------
 # Requirements:
 Laptop (Mac or PC)
-If you have a PC laptop, please have gitbash installed prior to starting.
+If you have a PC laptop, please have powershell or gitbash installed prior to starting.
 https://gitforwindows.org/
 
 ------------
 
 ### Command Line Interface (CLI)
-Most bioinformatic tools use the CLI. The CLI is a way of interacting with a computer's operating system using text representation of files, folders, etc. This differs from the commonly used graphical user interface (GUI), where we can see images linked to files, folders, etc. In order to access the CLI, we have to invoke a program, shell, which is a CLI program that allows us to control the computer by typing instructions with a keyboard.
+Most bioinformatic tools use the CLI. The CLI is a way of interacting with a computer's operating system using text representation of files, folders, etc. This differs from the commonly used, graphical user interface (GUI), where we can see images linked to files, folders, etc. In order to access the CLI, we have to invoke a shell, which is a CLI program that allows us to control the computer by typing instructions with a keyboard.
 
 On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer.
-On a PC/Windows, you’ll can use powershell to access the shell.
+On a PC/Windows, you’ll can use powershell or gitbash to access the shell.
 
 To save time, we will be working on a remote server, provided by the Nevada Institue of Personalized Medicine (NIPM), where all the necessary data and software is available. 
 
@@ -28,7 +28,7 @@ Lets begin using the CLI!!!!
 
 ------------ 
 
-First we need to connect to the remote server using secure shell (ssh). For Macs, open a terminal. For PC, open a terminal using powershell or gitbash. Type the following in the terminal:
+First we need to connect to the remote server using a secure shell (ssh). For Macs, open a terminal. For PC, open a terminal using powershell or gitbash. Type the following in the terminal:
 ```
 ssh {username}@10.238.4.152
 ```
@@ -85,7 +85,7 @@ conda activate workshop
 
 Now we are readying to do some bioinformatics!!!
 
-We are going to participate in a Legionella surveillance study. The Southern Nevada Health District and Southern Nevada Water Authority routinely perform surveillance of building water (premise plumbing)  in order to ensure the safety of public health. Legionnaire's disease is a bacterial respiratory disease with flu-like symptoms caused by _Legionella pneumonphila_. _Legionella pneumonphila_ is ubiquitous in fresh water environments and can grow in premise plumbing systems due to their favorable conditions. Legionnaire's disease is transmitted by the inhalation of contaminated water droplets and contaminated building water systems are known sources of Legionnaire's disease outbreaks. Not all _Legionella pneumonphila_ are pathogenic and cause disease, only certain strains are pathogenic and cause disease.   We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to a pathogenic strain linked to an ongoing outbreak in Los Angeles County. 
+We are going to participate in a Legionella surveillance study. The Southern Nevada Health District and Southern Nevada Water Authority routinely perform surveillance of building water (premise plumbing)  in order to ensure the safety of public health. Legionnaire's disease is a bacterial respiratory disease with flu-like symptoms caused by _Legionella pneumonphila_. _Legionella pneumonphila_ is ubiquitous in fresh water environments and can grow in premise plumbing systems due to their favorable conditions. Legionnaire's disease is transmitted by the inhalation of water droplets from contaminated building water systems. Not all _Legionella pneumonphila_ are pathogenic and cause disease, only certain strains/serogroups are pathogenic and cause disease.   We are going to be analyzing a subset of building water samples collected throughout Las Vegas Valley and compare them to a pathogenic strain linked to an ongoing outbreak in Los Angeles County. 
 
 ![](https://i.postimg.cc/1zdPgHjQ/How-Legionella-Affects-Building-Water-Systems-and-People.png)
 
@@ -201,7 +201,7 @@ nano
 Paste this code:
 ```
 #!/bin/bash
-# folder containing trimmed reads is $1
+# folder containing bam files is $1
 mkdir -p vcf
 for i in $1/*.bam
 do
