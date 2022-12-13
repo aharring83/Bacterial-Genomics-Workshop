@@ -278,7 +278,7 @@ Open a new terminal and transfer the align.tree file to your personal computer
 Go to https://icytree.org/
 [https://icytree.org/ ](https://icytree.org/ )
 Upload your align.tree file and view your tree.
-Congratulations, we have generated a phylogenetic tree of our site specific Legionella isolates based on their SNVs and compared them to a isolate of a recent Legionella outbreak in Los Angeles.
+Congratulations, we have generated a phylogenetic tree of our site specific Legionella isolates based on their SNVs and compared them to a strain linked to a recent Legionella outbreak in Los Angeles.
 Scientist use these trees to trace the origin and spread of outbreaks.
 We can look at our tree to see how Legionella from different buildings in the Las Vegas Valley are related to each other and the outbreak strain in Los Angeles.
 Thank you for participating in the workshop.
