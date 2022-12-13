@@ -1,7 +1,8 @@
 # Bacterial-Genomics-Workshop
 - Welcome to the bacterial genomics workshop where we will cover how to process sequencing data, assemble genomes and build phylogenetic trees.
-- We will be using a remote server to do the analysis but this workshop can be performed on a personal laptop with conda installed (will take longer to complete the workshop). 
-- Instructions on installing conda can be found here: https://github.com/rltillett/conda_notes
+- We will be using a remote server for this workshop but the workshop could be done on a personal laptop with Conda installed.  
+- Instructions on installing Conda can be found here: https://github.com/rltillett/conda_notes
+- Please Note! You only need to bring a laptop for this workshop and do not have to install Conda!!!!
 
 
 ------------
