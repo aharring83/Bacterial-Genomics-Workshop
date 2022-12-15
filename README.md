@@ -267,12 +267,12 @@ Run the following commands:
 ```
 mafft --thread 88 all.fasta > align.fasta
 ```
-![]https://ibb.co/3zcQ0kC
+![](https://ibb.co/3zcQ0kC)
 ```
 FastTree -nt align.fasta > align.tree
 ```
-![]https://ibb.co/wrD8SkR
-![]https://ibb.co/hZ6ffgv
+![](https://ibb.co/wrD8SkR)
+![](https://ibb.co/hZ6ffgv)
 ```
 exit
 ```
